@@ -1,0 +1,280 @@
+1. For a group of 7 people, find the probability that all 4 seasons (winter, spring,
+summer, fall) occur at least once each among their birthdays, assuming that
+all seasons are equally likely.
+Let Ai be the event that there are no birthdays in the ith season. The probability
+that all seasons occur at least once is 1
+P(A1 [ A2 [ A3 [ A4). Note
+that A1 \ A2 \ A3 \ A4 = ;. Using the inclusion-exclusion principle and the
+symmetry of the seasons,
+P(A1 [ A2 [ A3 [ A4) = X
+4
+i=1
+P(Ai) X
+3
+i=1
+X
+j>i
+P(Ai \ Aj )
++
+X
+3
+i=1
+X
+j>i
+X
+k>j
+P(Ai \ Aj \ Ak)
+= 4P(A1)
+6P(A1 \ A2)+4P(A1 \ A2 \ A3).
+We have P(A1) = (3/4)7. Similarly,
+P(A1 \ A2) = 1
+27 and P(A1 \ A2 \ A3) = 1
+47 .
+Therefore, P(A1 [ A2 [ A3 [ A4) = 4( 3
+4 )7
+6
+27 + 4
+47 . So the probability that all
+4 seasons occur at least once is 1
+
+4( 3
+4 )7
+6
+27 + 4
+47
+
+⇡ 0.513.
+2. Alice attends a small college in which each class meets only once a week. She is
+deciding between 30 non-overlapping classes. There are 6 classes to choose from
+for each day of the week, Monday through Friday. Trusting in the benevolence
+of randomness, Alice decides to register for 7 randomly selected classes out of
+the 30, with all choices equally likely. What is the probability that she will have
+classes every day, Monday through
+day with 3 classes, and has 1 class on each of the other 4 days. The number
+of possibilities for the former is 5
+2
+6
+2
+2
+63 (choose the 2 days when she has 2
+classes, and then select 2 classes on those days and 1 class for the other days).
+The number of possibilities for the latter is 5
+1
+6
+3
+
+64. So the probability is
+5
+2
+6
+2
+2
+63 + 5
+1
+6
+3
+
+64
+30
+7
+
+= 114
+377
+⇡ 0.302.
+Inclusion-Exclusion Method: we will use inclusion-exclusion to find the probability
+of the complement, which is the event that she has at least one day with
+no classes. Let Bi = Ac
+i. Then
+P(B1 [ B2 ··· [ B5) = X
+i
+P(Bi) X
+i<j
+P(Bi \ Bj ) + X
+i<j<k
+P(Bi \ Bj \ Bk)
+(terms with the intersection of 4 or more Bi’s are not needed since Alice must
+have classes on at least 2 days). We have
+P(B1) =
+24
+7
+
+30
+7
+,
+P(B1 \ B2) =
+18
+7
+
+30
+7
+,
+P(B1 \ B2 \ B3) =
+12
+7
+
+30
+7
+
+and similarly for the other intersections. So
+P(B1 [ ··· [ B5)=5
+24
+7
+
+30
+7
+
+
+✓5
+2
+◆18
+7
+
+30
+7
+
++
+✓5
+3
+◆12
+7
+
+30
+7
+
+= 263
+377.
+Therefore,
+P(A1 \ A2 \ A3 \ A4 \ A5) = 114
+377
+⇡ 0.302.
+2 Independence
+1. Is it possible that an event is independent of itself? If so, when?
+Let A be an event. If A is independent of itself, then P(A) = P(A\A) = P(A)2,
+so P(A) is 0 or 1. So this is only possible in the extreme cases that the event
+has probability 0 or 1.
+2
+2. Is it always true that if A and B are independent events, then Ac and Bc are
+independent events? Show that it is, or give a counterexample.
+Yes, because we have
+P(Ac \ Bc
+)=1
+P(A [ B)=1
+(P(A) + P(B)
+P(A \ B));
+since A and B are independent, this becomes
+1
+P(A)
+P(B) + P(A)P(B) = (1
+P(A))(1
+P(B)) = P(Ac
+)P(Bc
+).
+3. Give an example of 3 events A, B, C which are pairwise independent but not
+independent. Hint: find an example where whether C occurs is completely
+determined if we know whether A occurred and whether B occurred, but completely
+undetermined if we know only one of these things.
+Consider two fair, independent coin tosses, and let A be the event that the
+first toss is Heads, B be the event that the second toss is Heads, and C be the
+event that the two tosses have the same result. Then A, B, C are dependent
+since P(A\B \ C) = P(A\B) = P(A)P(B)=1/4 6= 1/8 = P(A)P(B)P(C),
+but they are pairwise independent: A and B are independent by definition; A
+and C are independent since P(A \ C) = P(A \ B)=1/4 = P(A)P(C), and
+similarly B and C are independent.
+4. Give an example of 3 events A, B, C which are not independent, yet satisfy
+P(A \ B \ C) = P(A)P(B)P(C). Hint: consider simple and extreme cases.
+Consider the extreme case where P(A) = 0. Then it’s automatically true that
+P(A)P(B)P(C) = 0, and also P(A \ B \ C) = 0 since A \ B \ C is a subset of
+A (and in general, if event A1 is a subset of event A2, then P(A1)  P(A2)).
+Then take B and C to be dependent, e.g., take any example with B = C and
+0 < P(B) < 1.
+3 Thinking Conditionally
+1. A bag contains one marble which is either green or blue, with equal probabilities.
+A green marble is put in the bag (so there are 2 marbles now), and then
+a random marble is taken out. The marble taken out is green. What is the
+probability that the remaining marble is also green?
+Historical note: this problem was first posed by Lewis Carroll in 1893.
+3
+Let A be the event that the initial marble is green, B be the event that the
+removed marble is green, and C be the event that the remaining marble is
+green. We need to find P(C|B). There are several ways to find this; one
+natural way is to condition on whether the initial marble is green:
+P(C|B) = P(C|B,A)P(A|B) + P(C|B,Ac
+)P(Ac
+|B)=1P(A|B)+0P(Ac
+|B).
+To find P(A|B), use Bayes’ Rule:
+P(A|B) = P(B|A)P(A)
+P(B) = 1/2
+P(B|A)P(A) + P(B|Ac)P(Ac) = 1/2
+1/2+1/4 = 2
+3
+.
+So P(C|B)=2/3.
+2. A spam filter is designed by looking at commonly occurring phrases in spam.
+Suppose that 80% of email is spam. In 10% of the spam emails, the phrase “free
+money” is used, whereas this phrase is only used in 1% of non-spam emails.
+A new email has just arrived, which does mention “free money”. What is the
+probability that it is spam?
+Let S be the event that an email is spam and F be the event that an email has
+the “free money” phrase. By Bayes’ Rule,
+P(S|F) = P(F|S)P(S)
+P(F) = 0.1 · 0.8
+0.1 · 0.8+0.01 · 0.2 = 80/1000
+82/1000 = 80
+82
+⇡ 0.9756.
+3. Let G be the event that a certain individual is guilty of a certain robbery. In
+gathering evidence, it is learned that an event E1 occurred, and a little later it
+is also learned that another event E2 also occurred.
+(a) Is it possible that individually, these pieces of evidence increase the chance
+of guilt (so P(G|E1) > P(G) and P(G|E2) > P(G)), but together they decrease
+the chance of guilt (so P(G|E1, E2) < P(G))?
+Yes, this is possible. In fact, it is possible to have two events which separately
+provide evidence in favor of G, yet which together preclude G! For example,
+suppose that the crime was committed between 1 pm and 3 pm on a certain
+day. Let E1 be the event that the suspect was at a nearby co↵eeshop from
+1 pm to 2 pm that day, and let E2 be the event that the suspect was at the
+nearby co↵eeshop from 2 pm to 3 pm that day.
+4
+Then P(G|E1) > P(G), P(G|E2) > P(G) (assuming that being in the vicinity
+helps show that the suspect had the opportunity to commit the crime), yet
+P(G|E1 \ E2) < P(G) (as being in the co↵eehouse from 1 pm to 3 pm gives
+the suspect an alibi for the full time).
+(b) Show that the probability of guilt given the evidence is the same regardless
+of whether we update our probabilities all at once, or in two steps (after getting
+the first piece of evidence, and again after getting the second piece of evidence).
+That is, we can either update all at once (computing P(G|E1, E2) in one step),
+or we can first update based on E1, so that our new probability function is
+Pnew(A) = P(A|E1), and then update based on E2 by computing Pnew(G|E2).
+This follows from the definition of conditional probability:
+Pnew(G|E2) = Pnew(G, E2)
+Pnew(E2) = P(G, E2|E1)
+P(E2|E1) = P(G, E1, E2)/P(E1)
+P(E1, E2)/P(E1) = P(G|E1, E2).
+4. A crime is committed by one of two suspects, A and B. Initially, there is equal
+evidence against both of them. In further investigation at the crime scene, it is
+found that the guilty party had a blood type found in 10% of the population.
+Suspect A does match this blood type, whereas the blood type of Suspect B is
+unknown.
+(a) Given this new information, what is the probability that A is the guilty
+party?
+Let M be the event that A’s blood type matches the guilty party’s and for
+brevity, write A for “A is guilty” and B for “B is guilty”. By Bayes’ Rule,
+P(A|M) = P(M|A)P(A)
+P(M|A)P(A) + P(M|B)P(B) = 1/2
+1/2 + (1/10)(1/2) = 10
+11.
+(We have P(M|B)=1/10 since, given that B is guilty, the probability that
+A’s blood type matches the guilty party’s is the same probability as for the
+general population.)
+(b) Given this new information, what is the probability that B’s blood type
+matches that found at the crime scene?
+Let C be the event that B’s blood type matches, and condition on whether B
+is guilty. This gives
+P(C|M) = P(C|M,A)P(A|M) + P(C|M,B)P(B|M) = 1
+10 ·
+10
+11 +
+1
+11 = 2
+11.
